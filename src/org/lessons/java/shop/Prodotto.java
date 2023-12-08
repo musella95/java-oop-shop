@@ -12,7 +12,16 @@ public class Prodotto {
 
 // 2 COSTRUCTOR
 
-    public Prodotto(String name, String description, int price, int iva) {
+    public Prodotto(String name, String description, double price, double iva) throws Exception{
+        if (name == null || name.isBlank())	{
+            throw new Exception("Nome non valido");
+        }
+        if (price<0){
+            throw new Exception("Il prezzo non puo essere negativo");
+        }
+        if (iva<0){
+            throw new Exception("L'iva  non puo essere negativa");
+        }
         int min= 0;
         int max= 1000;
         this.code = min + (int)(Math.random() * ((max - min) + 1));
@@ -33,6 +42,7 @@ public class Prodotto {
 
     public void setName(String name) {
         this.name = name;
+
     }
 
     public String getDescription() {
@@ -41,13 +51,14 @@ public class Prodotto {
 
     public void setDescription(String description) {
         this.description = description;
+
     }
 
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(double price)  {
         this.price = price;
     }
 
@@ -55,8 +66,10 @@ public class Prodotto {
         return iva;
     }
 
-    public void setIva(double iva) {
+    public void setIva(double iva) throws Exception {
         this.iva = iva;
+
+
     }
 
 // 4 METODI DI UTILITA'

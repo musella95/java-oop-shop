@@ -1,23 +1,30 @@
 package org.lessons.java.shop;
 
 
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-       Prodotto product1 = new Prodotto("scaldacollo","fatto in lana", 22, 24);
-        System.out.println(product1.fullName());
-        System.out.println(product1.basePrice());
-        System.out.println("il prezzo compreso d'iva è: ");
-        System.out.print(product1.ivaPrice());
-        Prodotto product2 = new Prodotto("cappello","fatto in lana merinos", 10, 24);
-        System.out.println(product2.fullName());
-        System.out.println(product2.basePrice());
-        System.out.println("il prezzo compreso d'iva è: ");
-        System.out.print(product2.ivaPrice());
-        Prodotto product3 = new Prodotto("guanti","fatti in pelle di vitello", 30, 24);
-        System.out.println(product3.fullName());
-        System.out.println(product3.basePrice());
-        System.out.println("il prezzo compreso d'iva è: ");
-        System.out.print(product3.ivaPrice());
+     Scanner scanner=new Scanner(System.in);
+     try {
+      System.out.println("nome del prodotto");
+      String nomeProdotto=scanner.nextLine();
+      System.out.println("prezzo del prodotto");
+      double prezzoProdotto=Double.parseDouble(scanner.nextLine());
+      System.out.println("iva del prodotto");
+      double prezzoIva=Double.parseDouble(scanner.nextLine());
+      System.out.println("descrizione del prodotto");
+      String descrizioneProdotto=scanner.nextLine();
+   Prodotto nuovoProdotto= new Prodotto(nomeProdotto,descrizioneProdotto,prezzoProdotto,prezzoIva);
+      System.out.println(nuovoProdotto.fullName());
+      System.out.println(nuovoProdotto.ivaPrice());
+      System.out.println(nuovoProdotto.basePrice());
+
+     }catch (Exception e){
+      System.out.println(e.getMessage());
+     } finally {
+
+      scanner.close();
+     }
     }
 }
